@@ -10,7 +10,8 @@ import {
 } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { SAVE_BOOK } from '../mutations';
+import { searchGoogleBooks } from '../utils/API';
+import { SAVE_BOOK } from '../utils/mutations';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
@@ -39,7 +40,7 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await saveBook(searchInput);
+      const response = await searchGoogleBooks(searchInput);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
@@ -78,6 +79,10 @@ const SearchBooks = () => {
       const { data } = await saveBook({
         variables: { input: bookToSave },
       });
+
+      console.log('bookId:', bookId);
+      console.log('bookToSave:', bookToSave);
+      console.log('mutation response:', data);
 
       setSavedBookIds([...savedBookIds, data.saveBook.bookId]);
     } catch (err) {
@@ -121,8 +126,8 @@ const SearchBooks = () => {
         <Row>
           {searchedBooks.map((book) => {
             return (
-              <Col md="4">
-                <Card key={book.bookId} border='dark'>
+              <Col key={book.bookId} md="4">
+                <Card border='dark'>
                   {book.image ? (
                     <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
                   ) : null}
@@ -134,7 +139,11 @@ const SearchBooks = () => {
                       <Button
                         disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
                         className='btn-block btn-info'
-                        onClick={() => handleSaveBook(book.bookId)}>
+                        onClick={() => {
+                          handleSaveBook(book.bookId);
+                          console.log('Save button clicked for book:', book.bookId)
+                        }}
+                      >
                         {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
                           ? 'This book has already been saved!'
                           : 'Save this Book!'}
