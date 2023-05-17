@@ -33,8 +33,6 @@ const SavedBooks = () => {
     return <h2>Error occurred. Please try again later.</h2>;
   }
 
-  console.log(savedBooks);
-
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 

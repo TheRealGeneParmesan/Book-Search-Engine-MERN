@@ -80,10 +80,6 @@ const SearchBooks = () => {
         variables: { input: bookToSave },
       });
 
-      console.log('bookId:', bookId);
-      console.log('bookToSave:', bookToSave);
-      console.log('mutation response:', data);
-
       setSavedBookIds([...savedBookIds, data.saveBook.bookId]);
     } catch (err) {
       console.error(err);
