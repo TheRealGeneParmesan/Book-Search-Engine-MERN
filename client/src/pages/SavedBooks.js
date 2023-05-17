@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Card,
@@ -14,11 +14,26 @@ import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  const { loading, data: userData } = useQuery(GET_ME);
+  const [savedBooks, setSavedBooks] = useState([]);
 
-  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
+  const { loading, data: userData, error } = useQuery(GET_ME, {
+    onCompleted: (data) => {
+      setSavedBooks(data?.me?.savedBooks || []);
+    },
+  });
 
-  const userDataLength = Object.keys(userData).length;
+  const [removeBook, { error: removeBookError }] = useMutation(REMOVE_BOOK);
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
+  if (error) {
+    console.error(error);
+    return <h2>Error occurred. Please try again later.</h2>;
+  }
+
+  console.log(savedBooks);
 
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -32,37 +47,35 @@ const SavedBooks = () => {
         variables: { bookId }
       });
 
-      // upon success, remove book's id from localStorage
       removeBookId(bookId);
 
+
+      setSavedBooks((prevSavedBooks) =>
+        prevSavedBooks.filter((book) => book.bookId !== bookId)
+      );
     } catch (err) {
       console.error(err);
     }
   };
 
-  // if data isn't here yet, say so
-  if (!userDataLength) {
-    return <h2>LOADING...</h2>;
-  }
-
   return (
     <>
-      <div fluid className="text-light bg-dark p-5">
+      <div fluid="true" className="text-light bg-dark p-5">
         <Container>
           <h1>Viewing saved books!</h1>
         </Container>
       </div>
       <Container>
         <h2 className='pt-5'>
-          {userData.savedBooks.length
-            ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
+          {savedBooks.length
+            ? `Viewing ${savedBooks.length} saved ${savedBooks.length === 1 ? 'book' : 'books'}:`
             : 'You have no saved books!'}
         </h2>
         <Row>
-          {userData.savedBooks.map((book) => {
+          {savedBooks.map((book) => {
             return (
-              <Col md="4">
-                <Card key={book.bookId} border='dark'>
+              <Col md="4" key={book.bookId}>
+                <Card border='dark'>
                   {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
                   <Card.Body>
                     <Card.Title>{book.title}</Card.Title>
