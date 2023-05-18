@@ -22,7 +22,7 @@ You can find my deployed application here:
 
 ## Description
 
-When I load the search engine, I am presented with a menu with the options Search for Books and Login/SIgnup and an input field to search for books and a submit button.
+When I load the search engine, I am presented with a menu with the options 'Search for Books' and 'Login/Signup' and an input field to search for books and a submit button.
 
 I can search for books without logging in, but in order to add books to my saved books, I must click the Login/Signup menu option to sign up.
 
@@ -30,13 +30,13 @@ When I click the login/signup menu, I am presented with three inputs for a usern
 
 When I enter a valid email address and create a password and click to sign up, then my account will be created and I can log into the site.
 
-After I input the book I am searching for in the search bar, I can click on the Save button on a book then that book's information is saved to my account
+After I input the book I am searching for in the search bar, I can click on the 'Save' button on a book and that book's information is saved to my account
 
 When I click on the option to see my saved books I am then presented with all of the books I saved to my account.
 
-When I click on the Remove button on a book, then that book is deleted from my saved books list
+When I click on the 'Remove' button on a book, then that book is deleted from my saved books list
 
-I can then click on the Logout button, which will log me out of the site and I will then be presented with a menu with the options Searhc for Books and Login/Signup and an input field to search for books and a submit button.
+I can then click on the 'Logout' button, which will log me out of the site and I will then be presented with a menu with the options Searhc for Books and Login/Signup and an input field to search for books and a submit button.
 
 
 ## Tests
