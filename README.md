@@ -18,7 +18,7 @@ This project uses a React front end, MongoDB database, Node.js/Express.js server
 
 You can find my deployed application here:
 
-https://book-search-engine-with-mern.herokuapp.com/saved
+https://book-search-engine-with-mern.herokuapp.com
 
 A screenshot of the working app:
 
