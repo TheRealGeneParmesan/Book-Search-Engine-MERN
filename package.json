@@ -14,11 +14,6 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  },
-  "buildpacks": [
-    {
-      "url": "heroku/nodejs"
-    }
-  ]
+  }
 
 }
