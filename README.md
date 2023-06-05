@@ -18,7 +18,11 @@ This project uses a React front end, MongoDB database, Node.js/Express.js server
 
 You can find my deployed application here:
 
+https://book-search-engine-with-mern.herokuapp.com
 
+A screenshot of the working app:
+
+![image](https://github.com/TheRealGeneParmesan/Book-Search-Engine-MERN/assets/119083185/7236c37b-65e8-4871-ac21-83569fa55100)
 
 ## Description
 
@@ -36,7 +40,7 @@ When I click on the option to see my saved books I am then presented with all of
 
 When I click on the 'Remove' button on a book, then that book is deleted from my saved books list
 
-I can then click on the 'Logout' button, which will log me out of the site and I will then be presented with a menu with the options Searhc for Books and Login/Signup and an input field to search for books and a submit button.
+I can then click on the 'Logout' button, which will log me out of the site and I will then be presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button.
 
 
 ## Tests
