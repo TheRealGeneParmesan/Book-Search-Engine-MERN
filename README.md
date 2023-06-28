@@ -1,6 +1,6 @@
 # Book Search Engine using the MERN Stack
 
-An application created using the MERN stack that searches for books using Google Books API that is refactored to be built with a GraphQL API and Apollo Server. 
+An application created using the MERN stack that searches for books using Google Books API, GraphQL and Apollo Server. 
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@ An application created using the MERN stack that searches for books using Google
 
 ## Installation
 
-This project uses a React front end, MongoDB database, Node.js/Express.js server and API. An Apollo Server is set up to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API. 
+This project uses a React front end, MongoDB database, Node.js/Express.js and Google Book's API. An Apollo Server is set up to use GraphQL queries and mutations to fetch and modify data. 
 
 ## Usage
 
@@ -42,10 +42,6 @@ When I click on the 'Remove' button on a book, then that book is deleted from my
 
 I can then click on the 'Logout' button, which will log me out of the site and I will then be presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button.
 
-
-## Tests
-
-I did not utilize unit testing for this project. 
 
 ## Questions
 
